@@ -1,0 +1,71 @@
+//PART 1
+
+char Output[3];
+char LongString[] = "Arduino serial test";
+int Number = 0;
+int Alpha = 65;
+unsigned long oldMillis = 0;
+int Incoming;
+
+const long interval = 500;
+void setup() {
+// Sets up the Baud rate
+Serial.begin(9600);
+Serial.available();
+
+}
+
+void loop() {
+  
+// Timer that loops through serial print
+unsigned long currentMillis = millis();
+
+if(currentMillis - oldMillis >= interval) {
+oldMillis = currentMillis;
+
+// only part of the ASCII chart, change to suit
+for(Number=0; Number< 11; ++Number){
+  
+// print it out in many formats:
+Serial.write(Alpha);
+Serial.print(Number);
+
+// print as an ASCII-encoded decimal - same as "DEC"
+Alpha++;
+
+Incoming = Serial.read();
+
+if (Incoming == 82) {
+  
+  Serial.print('\n');
+  Alpha = 65;
+  Number = 0;
+
+}
+
+if (Incoming != 82) {
+
+Incoming = 0;
+
+}
+
+if (Alpha >= 91) {
+
+Alpha = 65;
+
+}
+
+}
+
+}
+
+}
+
+//PART 2
+
+if(currentMillis = oldMillis >= interval) {
+
+  Serial.print(Z);//This is part 3 of the lab and the code below should be commented out to get a more accurate reading
+  digitalWrite(4,Z); //This is the part where we print the letter "Z" to the pin 4 to calculate baud rate
+
+}
